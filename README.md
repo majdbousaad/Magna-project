@@ -7,3 +7,4 @@ A training project for MagnaMedia
 
 ## Problems
 1. Still no relations.
+2. Cannot look for ids in SuperClasses using the regular crudRepository interface
