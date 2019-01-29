@@ -1,7 +1,9 @@
 # Magna-project
 A training project for MagnaMedia 
 
+## Solution
+1. Adding `@JsonManagedReference` and `@JsonBackReference` around the relational entities
+
 ## Problems
-1. The classes Car and MotorCycle are stored in the same table. this makes some problems when adding an entity because some other columns must not be null.
-2. All entities are sequenced with the same sequence.
-3. No relations yet
+1. No transactional
+2. OneToOne relation only
