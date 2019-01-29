@@ -1,11 +1,12 @@
 package majd.project.car.wheels;
 
+
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class Wheels {
 	
-	private int number = 0;
+	private int number;
 	private String size;
 	
 	

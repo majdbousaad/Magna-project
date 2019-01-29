@@ -2,12 +2,18 @@ package majd.project.superclasses;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.SequenceGenerator;
 
 @Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public abstract class Person {
 	
-	@Id @GeneratedValue
+	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Person_Generator")
+	@SequenceGenerator(name="Person_Generator", sequenceName="Person_Seq")
 	private Integer id;
 	private String name;
 	private Integer age;

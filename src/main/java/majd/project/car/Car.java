@@ -1,5 +1,8 @@
 package majd.project.car;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 
@@ -11,7 +14,12 @@ public class Car extends Vehicle {
 	
 	private int numberOfDoors;
 	private String fuelType;
+	
 	@Embedded
+	@AttributeOverrides({
+			@AttributeOverride(name="number", column=@Column(name="Number_Of_Wheels")),
+			@AttributeOverride(name="size", column=@Column(name="Wheel_Size"))
+	})
 	private Wheels wheels;
 	
 	public Car(String type, int speed, int numberOfDoors, String fuelType) {
