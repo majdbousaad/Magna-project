@@ -37,7 +37,7 @@ public class DriverController {
 		driverService.assignCarToDriver(driverId, carId);
 	}
 	
-	@RequestMapping("/driver/car/{carId}")
+	@RequestMapping("/find/driver/of/car/{carId}")
 	public Driver getDriverByCarId(@PathVariable Integer carId) {
 		return driverService.getDriverByCarId(carId);
 	}
