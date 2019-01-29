@@ -31,11 +31,12 @@ public class DriverController {
 	public void deleteDriver(@PathVariable Integer id) {
 		driverService.deleteDriver(id);
 	}
-	@RequestMapping(method=RequestMethod.POST, value="/assign/driver/{driverId}/to/{carId}")
+	@RequestMapping(method=RequestMethod.POST, value="/assign/driver/{driverId}/to/car/{carId}")
 	public void assignCarToDriver(@PathVariable Integer carId, @PathVariable Integer driverId) {
 		
 		driverService.assignCarToDriver(driverId, carId);
 	}
+	
 	@RequestMapping("/driver/car/{carId}")
 	public Driver getDriverByCarId(@PathVariable Integer carId) {
 		return driverService.getDriverByCarId(carId);

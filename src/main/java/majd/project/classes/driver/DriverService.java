@@ -1,5 +1,7 @@
 package majd.project.classes.driver;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -34,12 +36,10 @@ public class DriverService {
 	}
 	public Driver getDriverByCarId(Integer carId) {
 		
+		Query query = entityManager.createNativeQuery("SELECT * FROM driver WHERE car_id = ?", Driver.class);
+		query.setParameter(1, carId);
 		
-		Query query = entityManager.createNativeQuery("SELECT * FROM driver WHERE car_id = ?");
-		query.setParameter(0, carId);
-		
-		
-		return (Driver) query.getResultList();
+		return (Driver) query.getResultList().get(0);
 	}
 	public void assignCarToDriver(Integer driverId, Integer carId) {
 		Driver driver = driverRepository.findById(driverId).get();

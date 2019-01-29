@@ -7,6 +7,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
+
 import majd.project.classes.car.wheels.Wheels;
 import majd.project.classes.driver.Driver;
 import majd.project.superclasses.vehicle.Vehicle;
