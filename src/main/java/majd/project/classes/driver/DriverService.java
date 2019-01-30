@@ -25,30 +25,48 @@ public class DriverService {
 		return driverRepository.findAll();
 	}
 	public Driver getDriver(Integer id) {
-		return driverRepository.findById(id).get();
+		Driver driver = null;
+		try {
+			driver = driverRepository.findById(id).get();
+		} catch (Exception e) {
+			throw new RuntimeException("Driver " + id + " does not exist", e);
+		}
+		return driver;
 	}
 	public void addDriver(Driver driver) {
 		driverRepository.save(driver);
 	}
 	public void deleteDriver(Integer id) {
-		driverRepository.deleteById(id);
+		
+		try {
+			driverRepository.deleteById(id);
+		} catch (Exception e) {
+			throw new RuntimeException("Driver " + id + " does not exist", e);
+		}
+		
 	}
 	public Driver getDriverByCarId(Integer carId) {
 		
 		Query query = entityManager.createNativeQuery("SELECT * FROM driver WHERE car_id = ?", Driver.class);
 		query.setParameter(1, carId);
-		Driver driver;
+		Driver driver = null;
 		try {
 			driver = (Driver) query.getResultList().get(0);
 		} catch (Exception e) {
-			driver = null;
-			System.out.println("Error: No driver");
+			throw new RuntimeException("No driver assigned to car " + carId, e);
 		}
-		return (Driver) query.getResultList().get(0);
+		return driver;
 	}
 	public void assignCarToDriver(Integer driverId, Integer carId) {
-		Driver driver = driverRepository.findById(driverId).get();
-		driver.setCar(carRepository.findById(carId).get());
+		Driver driver = null;
+		try {
+			driver = driverRepository.findById(driverId).get();
+			driver.setCar(carRepository.findById(carId).get());
+			
+		} catch (Exception e) {
+			throw new RuntimeException("Error finding Driver " + driverId + " or Car " + carId, e);
+		}
 		driverRepository.save(driver);
+		
 	}
 }

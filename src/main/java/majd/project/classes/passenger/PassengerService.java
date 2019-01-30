@@ -3,6 +3,8 @@ package majd.project.classes.passenger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import majd.project.classes.passenger.Passenger;
+
 @Service
 public class PassengerService {
 	
@@ -13,12 +15,24 @@ public class PassengerService {
 		return passengerRepository.findAll();
 	}
 	public Passenger getPassenger(Integer id) {
-		return passengerRepository.findById(id).get();
+		Passenger passenger = null;
+		try {
+			passenger = passengerRepository.findById(id).get();
+		} catch (Exception e) {
+			throw new RuntimeException("Passenger " + id + " does not exist", e);
+		}
+		return passenger;
 	}
 	public void addPassenger(Passenger passenger) {
 		passengerRepository.save(passenger);
 	}
 	public void deletePassenger(Integer id) {
-		passengerRepository.deleteById(id);
+		try {
+			passengerRepository.deleteById(id);
+		} catch (Exception e) {
+			
+			throw new RuntimeException("Passenger " + id + " does not exist", e);
+		}
+		
 	} 
 }

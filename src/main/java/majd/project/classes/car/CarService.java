@@ -12,14 +12,26 @@ public class CarService {
 		return carRepository.findAll();
 	}
 	public Car getCar(Integer id) {
-		
-		return carRepository.findById(id).get();
+		Car car = null;
+		try {
+			car = carRepository.findById(id).get();
+		} catch (Exception e) {
+			throw new RuntimeException("Car " + id + " does not exist", e);
+		}
+		return car;
 	}
 	public void addCar(Car car) {
 		carRepository.save(car);
 	}
 	public void deleteCar(Integer id) {
-		carRepository.deleteById(id);
+		
+		try {
+			carRepository.deleteById(id);
+		} catch (Exception e) {
+			
+			throw new RuntimeException("Car " + id + " does not exist", e);
+		}
+		
 	}
 	
 }
