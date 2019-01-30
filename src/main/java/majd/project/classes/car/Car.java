@@ -5,12 +5,7 @@ import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import majd.project.classes.car.wheels.Wheels;
-import majd.project.classes.driver.Driver;
 import majd.project.superclasses.vehicle.Vehicle;
 
 @Entity
@@ -26,9 +21,7 @@ public class Car extends Vehicle {
 	})
 	private Wheels wheels;
 	
-	@OneToOne(mappedBy="car")
-	@JsonManagedReference
-	private Driver driver;
+	
 	
 	public Car(String type, int speed, int numberOfDoors, String fuelType) {
 		super(type, speed);
@@ -64,13 +57,6 @@ public class Car extends Vehicle {
 		this.fuelType = fuelType;
 	}
 
-	public Driver getDriver() {
-		return driver;
-	}
-
-	public void setDriver(Driver driver) {
-		this.driver = driver;
-	}
 	
 	
 }

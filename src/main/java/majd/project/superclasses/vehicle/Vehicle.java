@@ -6,7 +6,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import majd.project.classes.driver.Driver;
 
 
 @Entity
@@ -19,6 +24,9 @@ public abstract class Vehicle {
 	private String type;
 	private Integer speed;
 	
+	@OneToOne
+	@JsonManagedReference
+	private Driver driver;
 	
 	public Vehicle() {
 	}
@@ -45,6 +53,14 @@ public abstract class Vehicle {
 	}
 	public void setSpeed(Integer speed) {
 		this.speed = speed;
+	}
+
+	public Driver getDriver() {
+		return driver;
+	}
+
+	public void setDriver(Driver driver) {
+		this.driver = driver;
 	}
 	
 }

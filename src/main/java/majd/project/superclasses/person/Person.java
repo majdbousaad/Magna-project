@@ -8,6 +8,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.SequenceGenerator;
 
+
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public abstract class Person {
@@ -18,7 +19,6 @@ public abstract class Person {
 	private String name;
 	private Integer age;
 	private String country;
-	
 	
 	
 	public Person() {

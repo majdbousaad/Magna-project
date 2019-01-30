@@ -5,8 +5,8 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import majd.project.classes.car.Car;
 import majd.project.superclasses.person.Person;
+import majd.project.superclasses.vehicle.Vehicle;
 
 @Entity
 public class Driver extends Person {
@@ -15,7 +15,7 @@ public class Driver extends Person {
 	
 	@OneToOne
 	@JsonBackReference
-	private Car car;
+	private Vehicle vehicle;
 	
 	public Driver() {
 	}
@@ -32,12 +32,12 @@ public class Driver extends Person {
 		this.destination = destination;
 	}
 
-	public Car getCar() {
-		return car;
+	public Vehicle getVehicle() {
+		return vehicle;
 	}
 
-	public void setCar(Car car) {
-		this.car = car;
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
 	}
 	
 	

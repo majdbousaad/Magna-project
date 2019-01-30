@@ -8,7 +8,9 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import majd.project.classes.car.CarRepository;
+import majd.project.superclasses.vehicle.Vehicle;
+import majd.project.superclasses.vehicle.VehicleRepository;
+
 
 @Service
 public class DriverService {
@@ -18,8 +20,9 @@ public class DriverService {
 	
 	@Autowired
 	private DriverRepository driverRepository;
+	
 	@Autowired
-	private CarRepository carRepository;
+	private VehicleRepository vehicleRepository;
 	
 	public Iterable<Driver> getAllDrivers() {
 		return driverRepository.findAll();
@@ -45,28 +48,38 @@ public class DriverService {
 		}
 		
 	}
-	public Driver getDriverByCarId(Integer carId) {
+	public Driver getDriverByVehicleId(Integer vehicleId) {
 		
-		Query query = entityManager.createNativeQuery("SELECT * FROM driver WHERE car_id = ?", Driver.class);
-		query.setParameter(1, carId);
+		Query query = entityManager.createQuery("SELECT b FROM Driver b WHERE vehicle_id = ?1", Driver.class);
+		
+		query.setParameter(1, vehicleId);
 		Driver driver = null;
 		try {
 			driver = (Driver) query.getResultList().get(0);
 		} catch (Exception e) {
-			throw new RuntimeException("No driver assigned to car " + carId, e);
+			throw new RuntimeException("No driver assigned to vehicle " + vehicleId, e);
 		}
 		return driver;
 	}
-	public void assignCarToDriver(Integer driverId, Integer carId) {
+	public void assignVehicleToDriver(Integer driverId, Integer vehicleId) {
 		Driver driver = null;
+		Vehicle vehicle = null;
+		Query query = entityManager.createQuery("SELECT b FROM Vehicle b WHERE id = ?1", Vehicle.class);
+		query.setParameter(1, vehicleId);
+		
 		try {
 			driver = driverRepository.findById(driverId).get();
-			driver.setCar(carRepository.findById(carId).get());
+			vehicle = (Vehicle) query.getResultList().get(0);
 			
 		} catch (Exception e) {
-			throw new RuntimeException("Error finding Driver " + driverId + " or Car " + carId, e);
+			throw new RuntimeException("Error finding Driver " + driverId + " or Vehicle " + vehicleId, e);
 		}
+		vehicle.setDriver(driver);
+		vehicleRepository.save(vehicle);
+		
+		driver.setVehicle(vehicle);
 		driverRepository.save(driver);
+		
 		
 	}
 }
