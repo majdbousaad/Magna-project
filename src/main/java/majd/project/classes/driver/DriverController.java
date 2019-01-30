@@ -39,6 +39,7 @@ public class DriverController {
 	
 	@RequestMapping("/find/driver/of/car/{carId}")
 	public Driver getDriverByCarId(@PathVariable Integer carId) {
+		
 		return driverService.getDriverByCarId(carId);
 	}
 }

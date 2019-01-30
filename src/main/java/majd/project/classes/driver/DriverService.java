@@ -37,7 +37,13 @@ public class DriverService {
 		
 		Query query = entityManager.createNativeQuery("SELECT * FROM driver WHERE car_id = ?", Driver.class);
 		query.setParameter(1, carId);
-		
+		Driver driver;
+		try {
+			driver = (Driver) query.getResultList().get(0);
+		} catch (Exception e) {
+			driver = null;
+			System.out.println("Error: No driver");
+		}
 		return (Driver) query.getResultList().get(0);
 	}
 	public void assignCarToDriver(Integer driverId, Integer carId) {
