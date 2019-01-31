@@ -3,8 +3,6 @@ package majd.project.classes.driver;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,12 +48,10 @@ public class DriverService {
 	}
 	public Driver getDriverByVehicleId(Integer vehicleId) {
 		
-		Query query = entityManager.createQuery("SELECT b FROM Driver b WHERE vehicle_id = ?1", Driver.class);
-		
-		query.setParameter(1, vehicleId);
 		Driver driver = null;
 		try {
-			driver = (Driver) query.getResultList().get(0);
+			driver = driverRepository.findByVehicleId(vehicleId).get();
+			
 		} catch (Exception e) {
 			throw new RuntimeException("No driver assigned to vehicle " + vehicleId, e);
 		}
@@ -64,12 +60,10 @@ public class DriverService {
 	public void assignVehicleToDriver(Integer driverId, Integer vehicleId) {
 		Driver driver = null;
 		Vehicle vehicle = null;
-		Query query = entityManager.createQuery("SELECT b FROM Vehicle b WHERE id = ?1", Vehicle.class);
-		query.setParameter(1, vehicleId);
 		
 		try {
 			driver = driverRepository.findById(driverId).get();
-			vehicle = (Vehicle) query.getResultList().get(0);
+			vehicle = vehicleRepository.findById(vehicleId).get();
 			
 		} catch (Exception e) {
 			throw new RuntimeException("Error finding Driver " + driverId + " or Vehicle " + vehicleId, e);

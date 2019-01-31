@@ -2,10 +2,9 @@
 A training project for MagnaMedia 
 
 ## Solution
-1. Adding `@JsonManagedReference` and `@JsonBackReference` around the relational entities
-2. Adding Exceptions
-3. Custom queries to fetch super classes
+1. Adding `@ManyToOne` relation
+2. Adding more exceptions
+3. Adding repoistories for superclasses to fetch their entities
 
 ## Problems
 1. No transactional
-2. OneToOne relation only
