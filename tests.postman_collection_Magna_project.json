@@ -1,0 +1,404 @@
+{
+	"info": {
+		"_postman_id": "27bbd1df-6564-42cb-87ac-642cbaa65243",
+		"name": "tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8080/driver",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n       \"name\" : \"majd\",\n       \"age\" : 18,\n       \"country\" : \"Syria\",\n       \"destination\" : \"Germany\",\n       \"payment\" : 200\n       \n}"
+				},
+				"url": {
+					"raw": "localhost:8080/driver",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"driver"
+					]
+				},
+				"description": "Add a driver"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/car",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"type\": \"BMW\",\n        \"speed\": 260,\n        \"numberOfDoors\": 4,\n        \"fuelType\":\"Banzin\",\n        \"wheels\": {\n        \t\"number\": 4,\n        \t\"size\": \"Normal\"\n        }\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/car",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"car"
+					]
+				},
+				"description": "Add a Car"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/assign/driver/1/to/1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/assign/driver/1/to/vehicle/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"assign",
+						"driver",
+						"1",
+						"to",
+						"vehicle",
+						"1"
+					]
+				},
+				"description": "Assign a driver to a car"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/cars",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"id\": \"Java\",\n        \"name\": \"Core Java\",\n        \"description\": \"Core JavaScript Description\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/cars",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cars"
+					]
+				},
+				"description": "View Cars"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/car",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"type\": \"jeep\",\n        \"speed\": 300,\n        \"numberOfDoors\": 4,\n        \"fuelType\":\"Banzin\",\n        \"wheels\": {\n        \t\"number\": 4,\n        \t\"size\": \"Large\"\n        }\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/car",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"car"
+					]
+				},
+				"description": "Adding car2"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/drivers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/drivers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"drivers"
+					]
+				},
+				"description": "View drivers"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/driver",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n       \"name\" : \"David\",\n       \"age\" : 25,\n       \"country\" : \"UK\",\n       \"destination\" : \"US\",\n       \"payment\" : 300\n       \n}"
+				},
+				"url": {
+					"raw": "localhost:8080/driver",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"driver"
+					]
+				},
+				"description": "Adding driver2\n"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/find/driver/of/car/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/find/driver/of/vehicle/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"find",
+						"driver",
+						"of",
+						"vehicle",
+						"1"
+					]
+				},
+				"description": "finding the driver of a car"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/motor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"type\":\"motor A\",\n\t\"speed\": 160,\n\t\"helmetStrength\" : \"Normal\",\n\t\"fuelType\": \"Mazot\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/motor",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"motor"
+					]
+				},
+				"description": "Adding a Motor"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/motors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/motors",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"motors"
+					]
+				},
+				"description": "View Motors\n"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/passengers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/passengers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"passengers"
+					]
+				},
+				"description": "View all passengers"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/passenger",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"majd\",\n\t\"age\" : 18,\n\t\"destination\" : \"Germany\",\n\t\"payment\" : 300,\n\t\"country\" : \"Syria\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/passenger",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"passenger"
+					]
+				},
+				"description": "Adding a passenger"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/assign/passengers/to/vehicle/1",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t\n\t{\n\t\"name\" : \"majd\",\n\t\"age\" : 180,\n\t\"destination\" : \"Germany\",\n\t\"payment\" : 300,\n\t\"country\" : \"Syria\"\n},\n\n{\n\t\"name\" : \"Lubna\",\n\t\"age\" : 180,\n\t\"destination\" : \"Germany\",\n\t\"payment\" : 300,\n\t\"country\" : \"Syria\"\n},\n{\n\t\"name\" : \"Daiv\",\n\t\"destination\" : \"Germany\",\n\t\"age\" : 180,\n\t\"payment\" : \"300\",\n\t\"country\" : \"Syria\"\n}\n\t\n\n\t\n\t\n]"
+				},
+				"url": {
+					"raw": "localhost:8080/assign/passengers/to/vehicle/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"assign",
+						"passengers",
+						"to",
+						"vehicle",
+						"1"
+					]
+				},
+				"description": "testing transcational"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/find/passengers/of/vehicle/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/find/passengers/of/vehicle/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"find",
+						"passengers",
+						"of",
+						"vehicle",
+						"1"
+					]
+				},
+				"description": "find passengers of vehicle 1"
+			},
+			"response": []
+		}
+	]
+}
