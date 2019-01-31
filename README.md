@@ -1,10 +1,10 @@
 # Magna-project
 A training project for MagnaMedia 
 
-## Solution
+## Solutions
 1. Adding `@ManyToOne` relation
 2. Adding more exceptions
-3. Adding repoistories for superclasses to fetch their entities
+3. Adding repositories for superclasses to fetch their entities
 
-## Problems
+## Problem
 1. No transactional
