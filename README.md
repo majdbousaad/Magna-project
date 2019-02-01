@@ -2,9 +2,10 @@
 A training project for MagnaMedia 
 
 ## Solutions
-1. Adding `@ManyToOne` relation
-2. Adding more exceptions
-3. Adding repositories for superclasses to fetch their entities
+1. Adding custom configurations classes in order to enable the transactional annotation.
+2. Removing `Vehicle_Passenger` table with mappedBy.
+3. Adding controllers for super classes.
 
 ## Problem
-1. No transactional
+
+No problems yet
