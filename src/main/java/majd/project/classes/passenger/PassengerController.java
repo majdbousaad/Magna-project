@@ -2,6 +2,8 @@ package majd.project.classes.passenger;
 
 import java.util.List;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,10 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 import majd.project.classes.passenger.Passenger;
 
 @RestController
+
 public class PassengerController {
 	
 	@Autowired
 	private PassengerService passengerService;
+	
+	
 	
 	@RequestMapping("/passengers")
 	public Iterable<Passenger> showPassengers() {
@@ -35,9 +40,14 @@ public class PassengerController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/assign/passengers/to/vehicle/{vehicleId}")
+	
 	public void assignPassengersToVehicle(@RequestBody List<Passenger> passengers,@PathVariable Integer vehicleId) {
+		try {
+			passengerService.assignPassengersToVehicle(passengers, vehicleId);
+		} catch (Exception e) {
+			throw new RuntimeException("Error saving some passenger, some data cannot be null! => RollingBack...", e);
+		}
 		
-		passengerService.assignPassengersToVehicle(passengers, vehicleId);
 
 	}
 	@RequestMapping("/find/passengers/of/vehicle/{vehicleId}")

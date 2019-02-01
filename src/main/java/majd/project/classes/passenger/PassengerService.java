@@ -3,8 +3,12 @@ package majd.project.classes.passenger;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import majd.project.classes.passenger.Passenger;
 import majd.project.superclasses.vehicle.Vehicle;
 import majd.project.superclasses.vehicle.VehicleRepository;
@@ -18,6 +22,7 @@ public class PassengerService {
 	
 	@Autowired
 	private VehicleRepository vehicleRepository;
+	
 	
 	public Iterable<Passenger> getAllPassengers() {
 		return passengerRepository.findAll();
@@ -43,27 +48,20 @@ public class PassengerService {
 		}
 		
 	}
-	
-	public void assignPassengersToVehicle(List<Passenger> passengers, Integer vehicleId)  {
+	@Transactional
+	public void assignPassengersToVehicle(List<Passenger> passengers, Integer vehicleId){
 		
 		Vehicle vehicle = null;
 		try {
 			 vehicle = vehicleRepository.findById(vehicleId).get();
 		} catch (Exception e) {
-			throw new RuntimeException("Vehicle with id " + vehicleId + " does not exist!", e);
+			throw new RuntimeException("Vehicle with id " + vehicleId + " does not exist!" + "  " + e.getCause(), e);
 		}
-		
 		
 		for(Passenger passenger : passengers) {
 			passenger.setVehicle(vehicle);
-			try {
-				passengerRepository.save(passenger);
-			} catch (Exception e) {
-				
-				throw new RuntimeException("Error saving some passenger", e);
-			}
-			
-			
+			passengerRepository.save(passenger);
+
 			vehicle.getPassengers().add(passenger);
 			
 		}

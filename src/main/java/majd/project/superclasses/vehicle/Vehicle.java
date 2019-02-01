@@ -24,6 +24,7 @@ public abstract class Vehicle {
 	
 	@Id @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="Vehicle_Generator")
 	@SequenceGenerator(name="Vehicle_Generator", sequenceName="Vehicle_Seq")
+	
 	private Integer id;
 	private String type;
 	private Integer speed;
@@ -32,7 +33,7 @@ public abstract class Vehicle {
 	@JsonManagedReference
 	private Driver driver;
 	
-	@OneToMany
+	@OneToMany(mappedBy="vehicle")
 	@JsonManagedReference
 	private List<Passenger> passengers;
 	
