@@ -8,4 +8,4 @@ A training project for MagnaMedia
 
 ## Problem
 
-No problems yet
+No problem yet
