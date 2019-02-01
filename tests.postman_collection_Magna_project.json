@@ -353,7 +353,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "[\n\t\n\t{\n\t\"name\" : \"majd\",\n\t\"age\" : 180,\n\t\"destination\" : \"Germany\",\n\t\"payment\" : 300,\n\t\"country\" : \"Syria\"\n},\n\n{\n\t\"name\" : \"Lubna\",\n\t\"age\" : 180,\n\t\"destination\" : \"Germany\",\n\t\"payment\" : 300,\n\t\"country\" : \"Syria\"\n},\n{\n\t\"name\" : \"Daiv\",\n\t\"destination\" : \"Germany\",\n\t\"age\" : 180,\n\t\"payment\" : \"300\",\n\t\"country\" : \"Syria\"\n}\n\t\n\n\t\n\t\n]"
+					"raw": "[\n\t\n\t{\n\t\"name\" : \"majd\",\n\t\"age\" : 180,\n\t\"destination\" : \"Germany\",\n\t\"payment\" : 300,\n\t\"country\" : \"Syria\"\n},\n\n{\n\t\"name\" : \"Lubna\",\n\t\"age\" : 180,\n\t\"destination\" : \"Germany\",\n\t\"payment\" : 300,\n\t\"country\" : \"Syria\"\n},\n{\n\t\"name\" : \"David\",\n\t\"age\" : 180,\n\t\"destination\" : \"Germany\",\n\t\"payment\" : \"300\",\n\t\"country\" : \"Syria\"\n}\n\t\n\n\t\n\t\n]"
 				},
 				"url": {
 					"raw": "localhost:8080/assign/passengers/to/vehicle/1",
@@ -397,6 +397,52 @@
 					]
 				},
 				"description": "find passengers of vehicle 1"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/vehicles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/vehicles",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"vehicles"
+					]
+				},
+				"description": "Showing all vehicles"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/people",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/people",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"people"
+					]
+				},
+				"description": "Show all people"
 			},
 			"response": []
 		}
