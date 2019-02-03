@@ -2,9 +2,9 @@
 A training project for MagnaMedia 
 
 ## Solutions
-1. Adding custom configurations classes in order to enable the transactional annotation.
-2. Removing `Vehicle_Passenger` table with mappedBy.
-3. Adding controllers for super classes.
+1. Adding cascade property
+2. Adding serialzer classes in order to fetch objects with relations.
+3. finding a better way than serializer classes, @jsonIgnoreProperties
 
 ## Problem
 

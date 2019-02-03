@@ -2,8 +2,6 @@ package majd.project.classes.passenger;
 
 import java.util.List;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,8 +42,8 @@ public class PassengerController {
 	public void assignPassengersToVehicle(@RequestBody List<Passenger> passengers,@PathVariable Integer vehicleId) {
 		try {
 			passengerService.assignPassengersToVehicle(passengers, vehicleId);
-		} catch (Exception e) {
-			throw new RuntimeException("Error saving some passenger, some data cannot be null! => RollingBack...", e);
+		} catch (RuntimeException e) {
+			throw new RuntimeException("Something went wrong, rolling back", e);
 		}
 		
 

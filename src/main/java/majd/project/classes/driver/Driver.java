@@ -3,7 +3,7 @@ package majd.project.classes.driver;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import majd.project.superclasses.person.Person;
 import majd.project.superclasses.vehicle.Vehicle;
@@ -14,7 +14,7 @@ public class Driver extends Person {
 	private String destination;
 	
 	@OneToOne
-	@JsonBackReference
+	@JsonIgnoreProperties(value= {"driver"})
 	private Vehicle vehicle;
 	
 	public Driver() {

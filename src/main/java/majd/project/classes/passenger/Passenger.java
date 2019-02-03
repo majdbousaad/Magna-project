@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import majd.project.superclasses.person.Person;
 import majd.project.superclasses.vehicle.Vehicle;
 
@@ -17,7 +19,7 @@ public class Passenger extends Person {
 	
 	
 	@ManyToOne
-	@JsonBackReference
+	@JsonIgnoreProperties(value= {"passengers"})
 	private Vehicle vehicle;
 	
 	public Passenger() {

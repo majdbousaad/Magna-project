@@ -2,6 +2,7 @@ package majd.project.superclasses.vehicle;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,8 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import majd.project.classes.driver.Driver;
 import majd.project.classes.passenger.Passenger;
 
@@ -30,11 +31,11 @@ public abstract class Vehicle {
 	private Integer speed;
 	
 	@OneToOne
-	@JsonManagedReference
+	@JsonIgnoreProperties(value= {"vehicle"})
 	private Driver driver;
 	
-	@OneToMany(mappedBy="vehicle")
-	@JsonManagedReference
+	@OneToMany(mappedBy="vehicle", cascade=CascadeType.ALL)
+	@JsonIgnoreProperties(value= {"vehicle"})
 	private List<Passenger> passengers;
 	
 	public Vehicle() {

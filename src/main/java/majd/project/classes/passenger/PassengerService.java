@@ -5,7 +5,6 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,16 +54,16 @@ public class PassengerService {
 		try {
 			 vehicle = vehicleRepository.findById(vehicleId).get();
 		} catch (Exception e) {
-			throw new RuntimeException("Vehicle with id " + vehicleId + " does not exist!" + "  " + e.getCause(), e);
+			throw new RuntimeException("Vehicle with id " + vehicleId + " does not exist!", e);
+		}
+			
+		vehicle.getPassengers().addAll(passengers);
+		
+		for(Passenger passenger: vehicle.getPassengers()) {
+			passenger.setVehicle(vehicle);
 		}
 		
-		for(Passenger passenger : passengers) {
-			passenger.setVehicle(vehicle);
-			passengerRepository.save(passenger);
-
-			vehicle.getPassengers().add(passenger);
-			
-		}
+		
 		vehicleRepository.save(vehicle);
 	}
 	
