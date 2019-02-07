@@ -52,4 +52,14 @@ public class PassengerController {
 	public Iterable<Passenger> findPassengersOfVehicleId(@PathVariable Integer vehicleId) {
 		return passengerService.findPassengersOfVehicleId(vehicleId);
 	}
+	
+	@RequestMapping(method=RequestMethod.POST, value="/passengers")
+	public void addPassengers(@RequestBody List<Passenger> passengers) {
+		try {
+			passengerService.saveAllPassengers(passengers);
+		} catch (Exception e) {
+			throw new RuntimeException("Failed to save some passenger", e);
+		}
+		
+	}
 }

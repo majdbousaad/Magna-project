@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import majd.project.classes.passenger.Passenger;
 import majd.project.superclasses.vehicle.Vehicle;
 import majd.project.superclasses.vehicle.VehicleRepository;
@@ -47,7 +46,6 @@ public class PassengerService {
 		}
 		
 	}
-	@Transactional
 	public void assignPassengersToVehicle(List<Passenger> passengers, Integer vehicleId){
 		
 		Vehicle vehicle = null;
@@ -70,4 +68,18 @@ public class PassengerService {
 	public Iterable<Passenger> findPassengersOfVehicleId(Integer vehicleId) {
 		return passengerRepository.findByVehicleId(vehicleId);
 	}
+	
+	/*
+	 * Transactional test
+	 * 
+	 * */
+	@Transactional
+	public void saveAllPassengers(List<Passenger> passengers) {
+		
+		for(Passenger passenger : passengers) {
+			passengerRepository.save(passenger);
+		}
+		
+	}
+	
 }
